@@ -1,0 +1,53 @@
+<div class= "d-flex flex-column align-items-center py-4" style="padding-top: 100px !important;">
+<form action="/home/get_list" method="post" class="d-flex align-items-center justify-content-center">
+  <select name="location" class="custom-select">
+    <option value="1">송파구</option>
+    <option value="2">강남구</option>
+    <option value="3">종로구</option>
+    <option value="4">강서구</option>
+    <option value="5">성북구</option>
+  </select>
+
+  <input type="submit" value="조회" class="btn btn-primary btn-md text-uppercase js-scroll-trigger my-4">
+</form>
+
+<% if @paginated_list%>
+
+<table class="table text-white" style="width: 80% !important;">
+  <thead>
+    <tr>
+      <th scope="col">번호</th>
+      <th scope="col">업체명</th>
+      <th scope="col">등록일자</th>
+      <th scope="col">개인/법인</th>
+      <th scope="col">전화번호</th>
+      <th scope="col">주소</th>
+      <th scope="col">비고</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% i = @start_num%>
+  <% @paginated_list.each do|alist|%>
+    <tr>
+      <th scope="row"><%= i%></th>
+      <td><%= alist["BUP_NM"] %></td>
+      <td><%= alist["PERM_YMD"] %></td>
+      <td><%= alist["BUP_YN"] %></td>
+      <td><%= alist["SITE_TEL"] %></td>
+      <td><%= alist["SITE_ADDR"] %></td>
+      <td><%= alist["TRE_ARTCL"] %></td>
+    </tr>
+  <% i += 1%>
+  <% end%>
+  </tbody>
+</table>
+<% j = 1%>
+<div class="d-flex">
+<% $num_of_pages.times do%>
+  <%= link_to j.to_s, paginate_list_path(j.to_s), class: "mx-2"%>
+  <% j += 1%>
+<% end%>
+<% else%>
+<% end%>
+</div>
+</div>
