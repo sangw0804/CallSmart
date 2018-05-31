@@ -42,4 +42,6 @@
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
 <%= link_to "Back", :back %>
+  <p class="notice" style="margin: 0; color:tomato;"><%= notice %></p>
+  <p class="alert" style="margin: 0; color:tomato;"><%= alert %></p>
 </div>
