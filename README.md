@@ -1,24 +1,5 @@
-# README
+<h1>콜스마트</h1>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+멋쟁이 사자처럼 6기 전재현, 유현재, 오상우
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+서울시 데이터광장의 신규사업자 데이터베이스를 이용해 제공하는 웹 서비스입니다.

@@ -36,6 +36,8 @@ class HomeController < ApplicationController
       end
     end
 
+    $filtered_list.sort! {|a,b| b["PERM_YMD"] <=> a["PERM_YMD"] }
+
     $num_of_pages = ($filtered_list.length / 20.0).ceil
     @paginated_list = $filtered_list.paginate(page: 1, per_page: 20)
     @start_num = 1
@@ -50,7 +52,7 @@ class HomeController < ApplicationController
 
   def check_log_in
     unless user_signed_in?
-      redirect_to show_path
+      redirect_to new_user_session_path
     end
   end
 end
