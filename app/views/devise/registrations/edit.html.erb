@@ -32,6 +32,12 @@
     <%= f.password_field :current_password, autocomplete: "off" %>
   </div>
 
+<% if current_user.isPaid %>
+  <div class="field">
+    <%= current_user.isPaid %>
+  </div>
+<% end %>
+
   <div class="actions">
     <%= f.submit "Update" %>
   </div>
