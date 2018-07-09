@@ -22,3 +22,8 @@
           </div>
       </div>
     </footer>
+    <script>
+    if("<%= flash[:notice] %>") {
+      alert("<%= flash[:notice] %>");
+    }
+    </script>

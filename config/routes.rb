@@ -10,5 +10,7 @@ Rails.application.routes.draw do
 
   get 'home/paginate_list/:page' => 'home#paginate_list', as: "paginate_list"
 
+  post 'payment' => 'home#payment', as: "payment"
+
   root 'home#index'
 end

@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
-  before_action :check_log_in, only: [:show, :get_list]
+  before_action :check_log_in, only: [:show, :get_list, :payment]
+  before_action :check_payment, only: [:show, :get_list]
 
   require 'open-uri'
   require 'json'
@@ -9,6 +10,17 @@ class HomeController < ApplicationController
   end
 
   def show 
+  end
+
+  def payment
+    unless params[:check]
+      render 'home/index'
+    else
+      user = User.find(current_user.id)
+      user.isPaid = Time.new
+      user.save
+      render 'home/index'
+    end
   end
 
   def get_list  # dropdown list로 지역을 설정해서, 해당 지역 api 받아오는 액션
@@ -53,6 +65,13 @@ class HomeController < ApplicationController
   def check_log_in
     unless user_signed_in?
       redirect_to new_user_session_path
+    end
+  end
+
+  def check_payment
+    unless current_user.isPaid
+      flash[:notice] = "신규사업자 DB를 열람하시려면 결제 해주세요!"
+      redirect_to root_path
     end
   end
 end
